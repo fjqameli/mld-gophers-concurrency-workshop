@@ -1,34 +1,25 @@
 package main
 
 import (
+	"fmt"
 	"runtime"
 	"time"
 )
 
-var _ = runtime.GOMAXPROCS(1)
-
-var a, b int
-
-func u1() {
-	a = 1
-	b = 2
-	println("corriendo u1")
-}
-
-func u2() {
-	a = 3
-	b = 4
-	println("corriendo u2")
-}
-
-func p() {
-	println(a)
-	println(b)
-}
-
 func main() {
-	go u1()
-	go u2()
-	go p()
-	time.Sleep(1 * time.Second)
+	runtime.GOMAXPROCS(1)
+	go func() {
+		for i := 0; i <= 10000; i++ {
+
+		}
+	}()
+	fmt.Println("Dropin mic")
+	go func() {
+		for i := 0; i <= 255; i++ {
+			time.Sleep(100 * time.Millisecond)
+		}
+	}()
+	runtime.Gosched()
+	runtime.GC()
+	fmt.Println("Done")
 }
