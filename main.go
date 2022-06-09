@@ -20,8 +20,8 @@ func main() {
 	p2 := Player{name: "pong", table: table}
 	go p1.Play()
 	go p2.Play()
-	p1.Serve()
-
+	//p1.Serve()
+	<-table
 }
 
 func (p *Player) Serve() {
