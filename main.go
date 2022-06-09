@@ -34,7 +34,7 @@ func (p *Player) Play() {
 		ball := <-p.table
 		ball.hits++
 		fmt.Println(p.name, ball.hits)
-		time.Sleep(100 * time.Microsecond)
+		time.Sleep(100 * time.Millisecond)
 		p.table <- ball
 	}
 }
